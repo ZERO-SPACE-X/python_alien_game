@@ -41,3 +41,4 @@ class Settings():
         self.alien_lr_speed_factor *= self.speed_scale
         self.ship_speed_factor *= self.speed_scale
         self.bullet_speed_factor *= self.speed_scale
+        self.abc = 1
