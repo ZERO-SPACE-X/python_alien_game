@@ -3,8 +3,8 @@ class GameStats():
 
     def __init__(self, ai_settings):
         self.ai_settings = ai_settings
-        self.game_active = True
-        self.restart()
+        self.game_active = False
+        self.reset_stats()
 
-    def restart(self):
+    def reset_stats(self):
         self.ship_left = self.ai_settings.ship_lim_num
