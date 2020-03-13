@@ -1,7 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 
-alien_file = '../images/alien.bmp'
+alien_file = 'imags/alien.bmp'
 class Alien(Sprite):
 
     def __init__(self, ai_settings, screen):

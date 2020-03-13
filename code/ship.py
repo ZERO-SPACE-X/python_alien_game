@@ -1,7 +1,7 @@
 import pygame
 import setting
 # image_file = 'images//plane.bmp'
-image_file = '../images//ship.bmp'
+image_file = 'images/ship.bmp'
 
 class Ship():
     """飞船相关的初始化"""
