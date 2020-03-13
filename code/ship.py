@@ -1,8 +1,8 @@
 import pygame
 import setting
 # image_file = 'images//plane.bmp'
-image_file = '../images/ship.bmp'
-
+# image_file = '../images/ship.bmp'
+image_file = '../images/baobao.bmp'
 class Ship():
     """飞船相关的初始化"""
     def __init__(self, ai_settings, screen):

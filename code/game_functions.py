@@ -3,6 +3,7 @@ import pygame
 from setting import Settings
 from bullet import Bullet
 from alien import Alien
+from time import sleep
 from ship import Ship
 
 def check_keydown_event(event, ai_settings, screen, ship,bullets):
@@ -110,10 +111,39 @@ def change_alien_directions(ai_settings, aliens):
         alien.rect.y += ai_settings.drop_speed
 
 
-def update_aliens(ai_settings, aliens):
+def update_aliens(ai_settings, screen, stats, ship, bullets, aliens):
     check_fleet_edges(ai_settings, aliens)
+
     aliens.update()
 
+    if pygame.sprite.spritecollideany(ship, aliens):  # 它检查编组是否有成员与精灵
+        # 发生了碰撞，并在找到与精灵发生了碰撞的成员后就停止遍历编组。在这里， 它遍历编
+        # 组aliens ，并返回它找到的第一个与飞船发生了碰撞的外星人
+        # print("ship hit!!!")
+        ship_hit(ai_settings, screen, stats, ship, bullets, aliens)
+        # creat_fleet(ai_settings, screen, aliens, ship)
+
+    check_aliens_bottom(ai_settings, screen, stats, ship, bullets, aliens)
+
+
+def ship_hit(ai_settings, screen, stats, ship, bullets, aliens):
+    if stats.ship_left > 0:
+        bullets.empty()
+        aliens.empty()
+        creat_fleet(ai_settings, screen, aliens, ship)
+        stats.ship_left -= 1
+        ship.center = ship.screen_rect.centerx
+        sleep(0.5)  # 暂停一会，看一下是怎么死的
+    else:
+        stats.game_active = False
+
+
+
+def check_aliens_bottom(ai_settings, screen, stats, ship, bullets, aliens):
+    for alien in aliens.sprites():
+        if alien.rect.bottom >= ai_settings.screen_height:
+            ship_hit(ai_settings, screen, stats, ship, bullets, aliens)
+            break
 
 def up_screen(ai_settings, screen, ship, bullets, aliens):
     # 每次循环时都重绘屏幕

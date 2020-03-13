@@ -20,5 +20,8 @@ class Settings():
         # 设置外星人的参数
         self.alien_lr_speed_factor = 1
         self.direction_x = 1
-        self.drop_speed = 10
+        self.drop_speed = 50
         self.down_flag = False
+
+        # 设置飞船个数
+        self.ship_lim_num = 3
